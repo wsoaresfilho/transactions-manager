@@ -1,5 +1,6 @@
-import React from 'react'
-import logo from '../logo.svg'
+import React from 'react';
+import logo from '../logo.svg';
+import './header.css';
 
 const Header = () => {
     return (
@@ -8,7 +9,7 @@ const Header = () => {
                 <img src={logo} className='App-logo' alt='logo' />
             </div>
         </header>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;
