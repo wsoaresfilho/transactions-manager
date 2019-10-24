@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header/Header.jsx';
-import RegisterFormContainer from '../components/RegisterForm/RegisterFormContainer';
+import RegisterFormContainer from '../components/RegisterTransaction/RegisterTransactionContainer';
 import './app.css';
 
 function App() {

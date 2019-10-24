@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-class RegisterForm extends PureComponent {
+class RegisterTransaction extends PureComponent {
     constructor(props) {
         super(props);
 
@@ -40,4 +40,4 @@ class RegisterForm extends PureComponent {
     }
 }
 
-export default RegisterForm;
+export default RegisterTransaction;

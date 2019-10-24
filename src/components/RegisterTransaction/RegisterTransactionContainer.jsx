@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import RegisterForm from '../RegisterForm/RegisterForm.jsx';
+import RegisterTransaction from './RegisterTransaction.jsx';
 import { addText } from '../../actions';
 
-class RegisterFormContainer extends Component {
+class RegisterTransactionContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {};
     }
     render() {
         return (
-            <RegisterForm
+            <RegisterTransaction
                 texts={this.props.allTexts}
                 addText={this.props.addText}
             />
@@ -33,4 +33,4 @@ function mapDispatchToProps(dispatch, ownProps) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(RegisterFormContainer);
+)(RegisterTransactionContainer);
