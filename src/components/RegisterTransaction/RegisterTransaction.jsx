@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './register.css';
 
@@ -153,5 +154,9 @@ class RegisterTransaction extends PureComponent {
         );
     }
 }
+
+RegisterTransaction.propTypes = {
+    addTransaction: PropTypes.func.isRequired,
+};
 
 export default RegisterTransaction;

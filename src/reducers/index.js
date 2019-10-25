@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { GET_TRANSACTION, ADD_TRANSACTION } from '../actions/index.js';
+import { GET_TRANSACTIONS, ADD_TRANSACTION } from '../actions/index.js';
 
 const defaultTransaction = {
     description: 'House Rent',
@@ -11,10 +11,9 @@ const defaultAllTransactions = {
 
 function transactions(state = defaultAllTransactions, action) {
     switch (action.type) {
-        case GET_TRANSACTION:
+        case GET_TRANSACTIONS:
             return {
-                ...state,
-                transaction: action.transaction,
+                ...state.allTransactions,
             };
         case ADD_TRANSACTION:
             return {
