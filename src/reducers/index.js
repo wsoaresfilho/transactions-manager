@@ -1,17 +1,27 @@
 import { combineReducers } from 'redux';
-import { GET_TEXT, ADD_TEXT } from '../actions/index.js';
+import { GET_TRANSACTION, ADD_TRANSACTION } from '../actions/index.js';
 
-function texts(state = { allTexts: ['testing!'] }, action) {
+const defaultTransaction = {
+    description: 'House Rent',
+    value: 1000.0,
+};
+const defaultAllTransactions = {
+    allTransactions: [defaultTransaction],
+};
+
+function transactions(state = defaultAllTransactions, action) {
     switch (action.type) {
-        case GET_TEXT:
+        case GET_TRANSACTION:
             return {
                 ...state,
-                text: action.text,
+                transaction: action.transaction,
             };
-        case ADD_TEXT:
+        case ADD_TRANSACTION:
             return {
                 ...state,
-                allTexts: state.allTexts.concat(action.text),
+                allTransactions: state.allTransactions.concat(
+                    action.transaction
+                ),
             };
         default:
             return state;
@@ -19,5 +29,5 @@ function texts(state = { allTexts: ['testing!'] }, action) {
 }
 
 export default combineReducers({
-    texts,
+    transactions,
 });

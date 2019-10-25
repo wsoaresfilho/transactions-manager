@@ -1,32 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import RegisterTransaction from './RegisterTransaction.jsx';
-import { addText } from '../../actions';
+import { addTransaction } from '../../actions';
 
 class RegisterTransactionContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {};
     }
+
     render() {
         return (
-            <RegisterTransaction
-                texts={this.props.allTexts}
-                addText={this.props.addText}
-            />
+            <RegisterTransaction addTransaction={this.props.addTransaction} />
         );
     }
 }
 
-function mapStateToProps({ texts }) {
+function mapStateToProps({ transactions }) {
     return {
-        allTexts: texts.allTexts,
+        allTransactions: transactions.allTransactions,
     };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
     return {
-        addText: text => dispatch(addText(text)),
+        addTransaction: transaction => dispatch(addTransaction(transaction)),
     };
 }
 

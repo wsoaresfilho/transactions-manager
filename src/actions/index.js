@@ -1,16 +1,16 @@
-export const GET_TEXT = 'GET_TEXT';
-export const ADD_TEXT = 'ADD_TEXT';
+export const GET_TRANSACTION = 'GET_TRANSACTION';
+export const ADD_TRANSACTION = 'ADD_TRANSACTION';
 
-export function getText(text) {
+export function getTransaction(transaction) {
     return {
-        type: GET_TEXT,
-        text,
+        type: GET_TRANSACTION,
+        transaction,
     };
 }
 
-export function addText(text) {
+export function addTransaction(transaction) {
     return {
-        type: ADD_TEXT,
-        text,
+        type: ADD_TRANSACTION,
+        transaction,
     };
 }
