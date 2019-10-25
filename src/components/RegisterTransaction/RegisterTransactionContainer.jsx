@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import RegisterTransaction from './RegisterTransaction.jsx';
 import { addTransaction } from '../../actions';
 
-class RegisterTransactionContainer extends Component {
+export class RegisterTransactionContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -21,11 +21,11 @@ RegisterTransactionContainer.propTypes = {
     addTransaction: PropTypes.func.isRequired,
 };
 
-function mapStateToProps({ transactions }) {
-    return {
-        allTransactions: transactions.allTransactions,
-    };
-}
+// function mapStateToProps({ transactions }) {
+//     return {
+//         allTransactions: transactions.allTransactions,
+//     };
+// }
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -34,6 +34,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(
-    mapStateToProps,
+    // mapStateToProps,
     mapDispatchToProps
 )(RegisterTransactionContainer);

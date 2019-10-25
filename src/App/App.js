@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header/Header.jsx';
-import RegisterFormContainer from '../components/RegisterTransaction/RegisterTransactionContainer';
+import RegisterTransactionContainer from '../components/RegisterTransaction/RegisterTransactionContainer';
 import './app.css';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
         <div className='app'>
             <Header />
             <div className='app-container'>
-                <RegisterFormContainer />
+                <RegisterTransactionContainer />
             </div>
         </div>
     );

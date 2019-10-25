@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import './register.css';
+import './styles/register.css';
 
 const transactionType = {
     CREDIT: 'credit',
@@ -23,7 +23,7 @@ class RegisterTransaction extends PureComponent {
         this.state = defaultState;
 
         this.onSubmit = this.onSubmit.bind(this);
-        this.handleTransactionTypeClick = this.handleTransactionTypeClick.bind(
+        this.handleTransactionTypeChange = this.handleTransactionTypeChange.bind(
             this
         );
         this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
@@ -70,7 +70,7 @@ class RegisterTransaction extends PureComponent {
         });
     }
 
-    handleTransactionTypeClick(event) {
+    handleTransactionTypeChange(event) {
         const tranType = event.target.value;
         const isCredit = tranType === transactionType.CREDIT;
         this.setState({
@@ -98,6 +98,7 @@ class RegisterTransaction extends PureComponent {
                 >
                     <input
                         required
+                        id='description-input'
                         className='register-transaction__input'
                         type='text'
                         value={description}
@@ -106,6 +107,7 @@ class RegisterTransaction extends PureComponent {
                     />
                     <input
                         required
+                        id='money-input'
                         className='register-transaction__input'
                         type='number'
                         min='0.00'
@@ -117,7 +119,7 @@ class RegisterTransaction extends PureComponent {
 
                     <div className={typeClassname} ref={this.toggleRef}>
                         <input
-                            onChange={this.handleTransactionTypeClick}
+                            onChange={this.handleTransactionTypeChange}
                             type='radio'
                             id='type-credit'
                             name='type'
@@ -129,7 +131,7 @@ class RegisterTransaction extends PureComponent {
                         </label>
 
                         <input
-                            onChange={this.handleTransactionTypeClick}
+                            onChange={this.handleTransactionTypeChange}
                             type='radio'
                             id='type-debit'
                             name='type'
@@ -148,7 +150,12 @@ class RegisterTransaction extends PureComponent {
                         </div>
                     </div>
 
-                    <button type='submit'>Add Transaction</button>
+                    <button
+                        className='register-transaction__button'
+                        type='submit'
+                    >
+                        Add Transaction
+                    </button>
                 </form>
             </div>
         );
