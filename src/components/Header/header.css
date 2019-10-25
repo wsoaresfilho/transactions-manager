@@ -1,5 +1,5 @@
 .header {
-  background-color: #282c34;
+  background-color: #2b7d6a;
   height: 90px;
   display: flex;
   flex-direction: column;
@@ -11,6 +11,6 @@
 
 .header__container {
   padding: 24px 40px 16px;
-  max-width: 1250px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
 }

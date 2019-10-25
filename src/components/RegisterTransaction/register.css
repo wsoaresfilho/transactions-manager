@@ -1,0 +1,142 @@
+:root {
+  --credit-color: #04da97;
+  --debit-color: red;
+  --border-width: 6px;
+  --border-radius: 20px;
+  --item-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+  --radio-font-size: 1.2em;
+}
+
+:focus {
+  outline: var(--credit-color) auto 2px;
+}
+
+.register-transaction__container {
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  background-color: #fffff0;
+  padding: 15px;
+}
+
+.register-transaction__title {
+  width: 100%;
+  text-align: center;
+  font-size: 1.8em;
+}
+
+.register-transaction__form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.register-transaction__form > * {
+  margin-bottom: 15px;
+  margin-right: 20px;
+}
+
+.register-transaction__form input {
+  border: none;
+  flex-basis: 250px;
+  box-shadow: var(--item-box-shadow);
+  padding: 5px 10px;
+  min-height: 35px;
+  flex-grow: 1;
+}
+
+.register-transaction__form input:first-child {
+  flex-grow: 3;
+}
+
+.register-transaction__radio input:checked + label {
+  color: transparent;
+}
+
+.register-transaction__radio {
+  position: relative;
+  border-radius: var(--border-radius);
+  transition: transform cubic-bezier(0, 0, 0.3, 2) 0.4s;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  min-width: 225px;
+  box-shadow: var(--item-box-shadow);
+}
+
+.register-transaction__radio.credit {
+  border: solid var(--border-width) var(--credit-color);
+}
+
+.register-transaction__radio.debit {
+  border: solid var(--border-width) var(--debit-color);
+}
+
+.register-transaction__radio > input[type='radio'] {
+  display: none;
+}
+
+.register-transaction__radio > #type-credit:checked ~ #flap {
+  transform: rotateY(-180deg);
+}
+
+.register-transaction__radio > #type-credit:checked ~ #flap > .content {
+  transform: rotateY(-180deg);
+}
+
+.register-transaction__radio > #type-debit:checked ~ #flap {
+  transform: rotateY(0deg);
+}
+
+.register-transaction__radio > label {
+  display: inline-block;
+  padding: 5px 26px;
+  text-align: center;
+  cursor: pointer;
+  font-size: var(--radio-font-size);
+}
+
+.register-transaction__radio > label,
+.register-transaction__radio > #flap {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.register-transaction__radio > #flap {
+  position: absolute;
+  top: calc(0px - var(--border-width));
+  left: 50%;
+  height: calc(100% + var(--border-width) * 2);
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  transform-style: preserve-3d;
+  transform-origin: left;
+  transition: transform cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
+}
+
+.register-transaction__radio.credit > #flap {
+  background-color: var(--credit-color);
+}
+
+.register-transaction__radio.debit > #flap {
+  background-color: var(--debit-color);
+}
+
+.register-transaction__radio > #flap > .content {
+  color: #fffff0;
+  transition: transform 0s linear 0.25s;
+  transform-style: preserve-3d;
+  font-size: var(--radio-font-size);
+}
+
+.register-transaction__form button {
+  background-color: var(--credit-color);
+  box-shadow: var(--item-box-shadow);
+  min-width: 200px;
+  color: #fffff0;
+  min-height: 45px;
+  min-width: 235px;
+}
