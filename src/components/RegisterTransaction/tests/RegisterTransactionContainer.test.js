@@ -1,6 +1,7 @@
 import React from 'react';
 import configureStore from 'redux-mock-store';
-import { shallow } from 'enzyme';
+import { Provider } from 'react-redux';
+import { mount } from 'enzyme';
 import ConnectedRegisterTransactionContainer from '../RegisterTransactionContainer';
 
 describe('RegisterTransactionContainer component', () => {
@@ -11,14 +12,11 @@ describe('RegisterTransactionContainer component', () => {
 
     beforeEach(() => {
         store = mockStore(initialState);
-        wrapper = shallow(
-            <ConnectedRegisterTransactionContainer store={store} />
+        wrapper = mount(
+            <Provider store={store}>
+                <ConnectedRegisterTransactionContainer />
+            </Provider>
         );
-        // wrapper = mount(
-        //     <Provider store={store}>
-        //         <ConnectedRegisterTransactionContainer />
-        //     </Provider>
-        // );
     });
 
     describe('should render', () => {

@@ -120,28 +120,28 @@ class RegisterTransaction extends PureComponent {
                     />
 
                     <div className={typeClassname} ref={this.toggleRef}>
+                        <input
+                            onChange={this.handleTransactionTypeChange}
+                            type='radio'
+                            id='type-credit'
+                            name='type'
+                            value={transactionType.CREDIT}
+                            checked={isCredit}
+                        />
                         <label id='type-credit__label' htmlFor='type-credit'>
                             Credit
-                            <input
-                                onChange={this.handleTransactionTypeChange}
-                                type='radio'
-                                id='type-credit'
-                                name='type'
-                                value={transactionType.CREDIT}
-                                checked={isCredit}
-                            />
                         </label>
 
+                        <input
+                            onChange={this.handleTransactionTypeChange}
+                            type='radio'
+                            id='type-debit'
+                            name='type'
+                            value={transactionType.DEBIT}
+                            checked={!isCredit}
+                        />
                         <label id='type-debit__label' htmlFor='type-debit'>
                             Debit
-                            <input
-                                onChange={this.handleTransactionTypeChange}
-                                type='radio'
-                                id='type-debit'
-                                name='type'
-                                value={transactionType.DEBIT}
-                                checked={!isCredit}
-                            />
                         </label>
 
                         <div
