@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import './styles/register.css';
+import uniqid from 'uniqid';
+import './styles.css';
 
 const transactionType = {
     CREDIT: 'credit',
@@ -11,7 +12,7 @@ const transactionType = {
 const defaultState = {
     isCredit: true,
     description: '',
-    value: 0.0,
+    value: '',
 };
 
 class RegisterTransaction extends PureComponent {
@@ -19,6 +20,7 @@ class RegisterTransaction extends PureComponent {
         super(props);
 
         this.formRef = React.createRef();
+        this.descriptionRef = React.createRef();
         this.toggleRef = React.createRef();
         this.state = defaultState;
 
@@ -31,22 +33,33 @@ class RegisterTransaction extends PureComponent {
         this.handleMoneyChange = this.handleMoneyChange.bind(this);
     }
 
+    componentDidMount() {
+        this.focusDescriptionInput();
+    }
+
     onSubmit(event) {
         event.preventDefault();
         const { isCredit, ...transaction } = this.state;
         const { addTransaction } = this.props;
         const value = isCredit ? transaction.value : transaction.value * -1;
+        const id = uniqid();
 
         addTransaction({
             ...transaction,
             value,
+            id,
         });
         this.setState(defaultState);
+        this.focusDescriptionInput();
     }
 
     getTypeText() {
         const { isCredit } = this.state;
         return isCredit ? transactionType.CREDIT : transactionType.DEBIT;
+    }
+
+    focusDescriptionInput() {
+        this.descriptionRef.current.focus();
     }
 
     handleTransitionEnd() {
@@ -65,7 +78,9 @@ class RegisterTransaction extends PureComponent {
     }
 
     handleMoneyChange(event) {
-        const moneyValue = parseFloat(event.target.value);
+        const { value } = event.target;
+        const moneyValue =
+            typeof value === 'number' ? parseFloat(value) : value;
 
         this.setState({
             value: moneyValue,
@@ -97,6 +112,7 @@ class RegisterTransaction extends PureComponent {
                     className='register-transaction__form'
                     onSubmit={this.onSubmit}
                     ref={this.formRef}
+                    autoComplete='off'
                 >
                     <input
                         required
@@ -106,20 +122,25 @@ class RegisterTransaction extends PureComponent {
                         value={description}
                         placeholder='Transaction description'
                         onChange={this.handleDescriptionChange}
+                        ref={this.descriptionRef}
                     />
                     <input
                         required
                         id='money-input'
                         className='register-transaction__input'
                         type='number'
-                        min='0.00'
+                        min='0.01'
                         step='0.01'
                         value={value}
                         placeholder='Transaction value'
                         onChange={this.handleMoneyChange}
                     />
 
-                    <div className={typeClassname} ref={this.toggleRef}>
+                    <div
+                        role='group'
+                        className={typeClassname}
+                        ref={this.toggleRef}
+                    >
                         <input
                             onChange={this.handleTransactionTypeChange}
                             type='radio'
@@ -153,7 +174,7 @@ class RegisterTransaction extends PureComponent {
                     </div>
 
                     <button
-                        className='register-transaction__button'
+                        className='register-transaction__button hover-shadow'
                         type='submit'
                     >
                         Add Transaction

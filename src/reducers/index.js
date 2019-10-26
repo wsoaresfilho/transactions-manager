@@ -1,26 +1,48 @@
 import { combineReducers } from 'redux';
-import { GET_TRANSACTIONS, ADD_TRANSACTION } from '../actions/index';
+import {
+    ADD_TRANSACTION,
+    DELETE_TRANSACTION,
+    TOGGLE_THEME,
+} from '../actions/index';
 
 const defaultTransaction = {
     description: 'House Rent',
     value: 1000.0,
+    id: 'default-123',
 };
-const defaultAllTransactions = {
-    allTransactions: [defaultTransaction],
+const defaultTransactions = {
+    transactions: [defaultTransaction],
 };
 
-function transactions(state = defaultAllTransactions, action) {
+function transactions(state = defaultTransactions, action) {
     switch (action.type) {
-        case GET_TRANSACTIONS:
-            return {
-                ...state.allTransactions,
-            };
         case ADD_TRANSACTION:
             return {
                 ...state,
-                allTransactions: state.allTransactions.concat(
-                    action.transaction
-                ),
+                transactions: state.transactions.concat(action.transaction),
+            };
+        case DELETE_TRANSACTION:
+            return {
+                ...state,
+                transactions: state.transactions.filter(t => {
+                    return t.id !== action.id;
+                }),
+            };
+        default:
+            return state;
+    }
+}
+
+const themes = {
+    LIGHT: 'light',
+    DARK: 'dark',
+};
+
+function theme(state = { theme: themes.LIGHT }, action) {
+    switch (action.type) {
+        case TOGGLE_THEME:
+            return {
+                theme: action.theme,
             };
         default:
             return state;
@@ -29,4 +51,5 @@ function transactions(state = defaultAllTransactions, action) {
 
 export default combineReducers({
     transactions,
+    theme,
 });

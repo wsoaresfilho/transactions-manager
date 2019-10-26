@@ -4,6 +4,7 @@
   --border-width: 6px;
   --border-radius: 20px;
   --item-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+  --item-box-shadow-hover: 1px 1px 6px 1px rgba(0, 0, 0, 0.5);
   --radio-font-size: 1.2em;
 }
 
@@ -36,13 +37,17 @@
   margin-right: 20px;
 }
 
-.register-transaction__form input {
+.register-transaction__form .register-transaction__input {
   border: none;
   flex-basis: 250px;
   box-shadow: var(--item-box-shadow);
   padding: 5px 10px;
   min-height: 35px;
   flex-grow: 1;
+}
+
+.register-transaction__form .register-transaction__input:focus {
+  box-shadow: var(--item-box-shadow-hover);
 }
 
 .register-transaction__form input:first-child {
@@ -63,6 +68,10 @@
   box-shadow: var(--item-box-shadow);
 }
 
+.register-transaction__radio:focus-within {
+  box-shadow: var(--item-box-shadow-hover);
+}
+
 .register-transaction__radio.credit {
   border: solid var(--border-width) var(--credit-color);
 }
@@ -72,7 +81,13 @@
 }
 
 .register-transaction__radio > input[type='radio'] {
-  display: none;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
 .register-transaction__radio > #type-credit:checked ~ #flap {
@@ -139,4 +154,9 @@
   color: #fffff0;
   min-height: 45px;
   /* min-width: 235px; */
+}
+
+.hover-shadow:hover,
+.hover-shadow:focus {
+  box-shadow: var(--item-box-shadow-hover);
 }
