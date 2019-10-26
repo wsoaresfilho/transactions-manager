@@ -7,7 +7,11 @@ import ConnectedRegisterTransactionContainer from '../RegisterTransactionContain
 describe('RegisterTransactionContainer component', () => {
     let wrapper;
     let store;
-    const initialState = {};
+    const initialState = {
+        transactions: {
+            transactions: [],
+        },
+    };
     const mockStore = configureStore();
 
     beforeEach(() => {

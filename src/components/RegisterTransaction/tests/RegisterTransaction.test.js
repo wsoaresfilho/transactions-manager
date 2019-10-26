@@ -33,6 +33,10 @@ describe('RegisterTransaction component', () => {
                 RegisterTransaction.prototype,
                 'handleTransitionEnd'
             ),
+            focus: jest.spyOn(
+                RegisterTransaction.prototype,
+                'focusDescriptionInput'
+            ),
         };
     });
 
@@ -40,6 +44,7 @@ describe('RegisterTransaction component', () => {
         spy.description.mockClear();
         spy.money.mockClear();
         spy.type.mockClear();
+        spy.focus.mockClear();
     });
 
     describe('should render', () => {
@@ -61,6 +66,12 @@ describe('RegisterTransaction component', () => {
 
         it('snapshot correctly', () => {
             expect(wrapper).toMatchSnapshot();
+        });
+    });
+
+    describe('when mounts', () => {
+        it('shold focus on description', () => {
+            expect(spy.focus).toHaveBeenCalled();
         });
     });
 
@@ -169,9 +180,10 @@ describe('RegisterTransaction component', () => {
             expect(instance.state).toStrictEqual({
                 isCredit: true,
                 description: '',
-                value: 0.0,
+                value: '',
             });
             expect(spy.onSubmit).toHaveBeenCalledTimes(1);
+            expect(spy.focus).toHaveBeenCalled();
             expect(props.addTransaction).toHaveBeenCalledTimes(1);
         });
     });

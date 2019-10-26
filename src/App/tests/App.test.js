@@ -1,13 +1,29 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
+import { mount } from 'enzyme';
 import App from '../App';
 
 describe('App component', () => {
     let wrapper;
+    let store;
+    const initialState = {
+        theme: {
+            theme: 'light',
+        },
+        transactions: {
+            transactions: [],
+        },
+    };
+    const mockStore = configureStore();
 
     beforeAll(() => {
-        wrapper = shallow(<App />);
-        // console.log(wrapper.debug())
+        store = mockStore(initialState);
+        wrapper = mount(
+            <Provider store={store}>
+                <App />
+            </Provider>
+        );
     });
 
     describe('should render', () => {

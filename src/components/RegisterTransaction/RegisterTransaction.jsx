@@ -59,7 +59,7 @@ class RegisterTransaction extends PureComponent {
     }
 
     focusDescriptionInput() {
-        this.descriptionRef.current.focus();
+        if (this.descriptionRef.current) this.descriptionRef.current.focus();
     }
 
     handleTransitionEnd() {
@@ -79,8 +79,7 @@ class RegisterTransaction extends PureComponent {
 
     handleMoneyChange(event) {
         const { value } = event.target;
-        const moneyValue =
-            typeof value === 'number' ? parseFloat(value) : value;
+        const moneyValue = value !== '' ? parseFloat(value) : '';
 
         this.setState({
             value: moneyValue,
