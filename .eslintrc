@@ -1,0 +1,19 @@
+{
+    // "off"=0
+    // "warn"=1
+    // "error"=2
+    "extends": ["airbnb", "prettier"],
+    "plugins": ["prettier"],
+    "rules": {
+        "prettier/prettier": ["error"],
+        "react/destructuring-assignment": ["warn"],
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
+        "import/no-named-as-default": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    },
+    "env": {
+        "browser": true,
+        "jest": true
+    }
+}

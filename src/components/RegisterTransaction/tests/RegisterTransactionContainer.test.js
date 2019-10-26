@@ -1,22 +1,24 @@
 import React from 'react';
 import configureStore from 'redux-mock-store';
-import { shallow, mount } from 'enzyme';
-import { Provider } from 'react-redux';
+import { shallow } from 'enzyme';
 import ConnectedRegisterTransactionContainer from '../RegisterTransactionContainer';
 
 describe('RegisterTransactionContainer component', () => {
-    let wrapper, store;
+    let wrapper;
+    let store;
     const initialState = {};
     const mockStore = configureStore();
 
     beforeEach(() => {
         store = mockStore(initialState);
-        // wrapper = shallow(<ConnectedRegisterTransactionContainer store={store} />);
-        wrapper = mount(
-            <Provider store={store}>
-                <ConnectedRegisterTransactionContainer />
-            </Provider>
+        wrapper = shallow(
+            <ConnectedRegisterTransactionContainer store={store} />
         );
+        // wrapper = mount(
+        //     <Provider store={store}>
+        //         <ConnectedRegisterTransactionContainer />
+        //     </Provider>
+        // );
     });
 
     describe('should render', () => {

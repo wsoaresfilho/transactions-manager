@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import RegisterTransaction from './RegisterTransaction.jsx';
-import { addTransaction } from '../../actions';
+import RegisterTransaction from './RegisterTransaction';
+import { addTransaction as addTransactionAction } from '../../actions';
 
 export class RegisterTransactionContainer extends Component {
     constructor(props) {
@@ -11,9 +11,8 @@ export class RegisterTransactionContainer extends Component {
     }
 
     render() {
-        return (
-            <RegisterTransaction addTransaction={this.props.addTransaction} />
-        );
+        const { addTransaction } = this.props;
+        return <RegisterTransaction addTransaction={addTransaction} />;
     }
 }
 
@@ -29,7 +28,8 @@ RegisterTransactionContainer.propTypes = {
 
 function mapDispatchToProps(dispatch) {
     return {
-        addTransaction: transaction => dispatch(addTransaction(transaction)),
+        addTransaction: transaction =>
+            dispatch(addTransactionAction(transaction)),
     };
 }
 

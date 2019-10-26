@@ -1,15 +1,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import RegisterTransaction from '../RegisterTransaction.jsx';
+import RegisterTransaction from '../RegisterTransaction';
 
 describe('RegisterTransaction component', () => {
-    let wrapper, instance, spy;
+    let wrapper;
+    let instance;
+    let spy;
     const props = {
         addTransaction: jest.fn(),
     };
 
     beforeEach(() => {
-        wrapper = shallow(<RegisterTransaction {...props} />);
+        wrapper = shallow(
+            <RegisterTransaction addTransaction={props.addTransaction} />
+        );
         instance = wrapper.instance();
         spy = {
             description: jest.spyOn(

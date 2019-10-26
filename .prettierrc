@@ -6,7 +6,7 @@
     "jsxSingleQuote": true,
     "overrides": [
         {
-            "files": ["*.css"],
+            "files": ["*.css", "*.json"],
             "options": {
                 "tabWidth": 2
             }

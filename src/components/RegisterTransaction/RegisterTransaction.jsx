@@ -31,29 +31,31 @@ class RegisterTransaction extends PureComponent {
         this.handleMoneyChange = this.handleMoneyChange.bind(this);
     }
 
-    handleTransitionEnd() {
-        const signalRotation = this.state.isCredit ? '' : '-';
-        this.toggleRef.current.style.transform = `rotateY(${signalRotation}15deg)`;
-        setTimeout(() => (this.toggleRef.current.style.transform = ''), 400);
-    }
-
-    getTypeText() {
-        return this.state.isCredit
-            ? transactionType.CREDIT
-            : transactionType.DEBIT;
-    }
-
     onSubmit(event) {
         event.preventDefault();
         const { isCredit, ...transaction } = this.state;
-        const value = this.state.isCredit
-            ? transaction.value
-            : transaction.value * -1;
-        this.props.addTransaction({
+        const { addTransaction } = this.props;
+        const value = isCredit ? transaction.value : transaction.value * -1;
+
+        addTransaction({
             ...transaction,
             value,
         });
         this.setState(defaultState);
+    }
+
+    getTypeText() {
+        const { isCredit } = this.state;
+        return isCredit ? transactionType.CREDIT : transactionType.DEBIT;
+    }
+
+    handleTransitionEnd() {
+        const { isCredit } = this.state;
+        const signalRotation = isCredit ? '' : '-';
+        this.toggleRef.current.style.transform = `rotateY(${signalRotation}15deg)`;
+        setTimeout(() => {
+            this.toggleRef.current.style.transform = '';
+        }, 400);
     }
 
     handleDescriptionChange(event) {
@@ -118,28 +120,28 @@ class RegisterTransaction extends PureComponent {
                     />
 
                     <div className={typeClassname} ref={this.toggleRef}>
-                        <input
-                            onChange={this.handleTransactionTypeChange}
-                            type='radio'
-                            id='type-credit'
-                            name='type'
-                            value={transactionType.CREDIT}
-                            checked={isCredit}
-                        />
                         <label id='type-credit__label' htmlFor='type-credit'>
                             Credit
+                            <input
+                                onChange={this.handleTransactionTypeChange}
+                                type='radio'
+                                id='type-credit'
+                                name='type'
+                                value={transactionType.CREDIT}
+                                checked={isCredit}
+                            />
                         </label>
 
-                        <input
-                            onChange={this.handleTransactionTypeChange}
-                            type='radio'
-                            id='type-debit'
-                            name='type'
-                            value={transactionType.DEBIT}
-                            checked={!isCredit}
-                        />
                         <label id='type-debit__label' htmlFor='type-debit'>
                             Debit
+                            <input
+                                onChange={this.handleTransactionTypeChange}
+                                type='radio'
+                                id='type-debit'
+                                name='type'
+                                value={transactionType.DEBIT}
+                                checked={!isCredit}
+                            />
                         </label>
 
                         <div

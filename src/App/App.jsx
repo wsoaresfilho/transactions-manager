@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../components/Header/Header.jsx';
+import Header from '../components/Header/Header';
 import RegisterTransactionContainer from '../components/RegisterTransaction/RegisterTransactionContainer';
 import './app.css';
 

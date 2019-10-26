@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { GET_TRANSACTIONS, ADD_TRANSACTION } from '../actions/index.js';
+import { GET_TRANSACTIONS, ADD_TRANSACTION } from '../actions/index';
 
 const defaultTransaction = {
     description: 'House Rent',
