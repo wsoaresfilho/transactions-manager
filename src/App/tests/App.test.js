@@ -1,5 +1,6 @@
 import React from 'react';
 import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import App from '../App';
@@ -8,14 +9,16 @@ describe('App component', () => {
     let wrapper;
     let store;
     const initialState = {
-        theme: {
+        settings: {
             theme: 'light',
+            isFetching: false,
         },
         transactions: {
-            transactions: [],
+            allTransactions: [],
         },
     };
-    const mockStore = configureStore();
+    const middlewares = [thunk];
+    const mockStore = configureStore(middlewares);
 
     beforeAll(() => {
         store = mockStore(initialState);

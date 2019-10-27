@@ -1,54 +1,75 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import LoadingOverlay from 'react-loading-overlay';
 import Header from '../components/Header/Header';
 import RegisterTransactionContainer from '../components/RegisterTransaction/RegisterTransactionContainer';
 import TransactionsListContainer from '../components/TransactionsList/TransactionsListContainer';
-import { toggleTheme } from '../actions';
+import { saveTheme, fetchSettingsData } from '../actions';
 import './app.css';
 
-function App(props) {
-    const { currentTheme } = props;
-    const classname = classNames({
-        app: true,
-        light: currentTheme === 'light',
-        dark: currentTheme === 'dark',
-    });
+class App extends PureComponent {
+    constructor(props) {
+        super(props);
 
-    const handleClick = () => {
-        const value = props.currentTheme === 'light' ? 'dark' : 'light';
-        props.changeTheme(value);
-    };
+        this.handleClick = this.handleClick.bind(this);
+    }
 
-    return (
-        <div className={classname}>
-            <Header />
-            <div className='app-container'>
-                <RegisterTransactionContainer />
-                <TransactionsListContainer />
+    componentDidMount() {
+        const { fetchSettings } = this.props;
+        fetchSettings();
+    }
+
+    handleClick() {
+        const { changeTheme, userTheme } = this.props;
+        const value = userTheme === 'light' ? 'dark' : 'light';
+        changeTheme(value);
+    }
+
+    render() {
+        const { userTheme, isFetching } = this.props;
+        const classname = classNames({
+            app: true,
+            light: userTheme === 'light',
+            dark: userTheme === 'dark',
+        });
+
+        return (
+            <div className={classname}>
+                <Header />
+                <LoadingOverlay active={isFetching} spinner>
+                    <div className='app-container'>
+                        <RegisterTransactionContainer />
+                        <TransactionsListContainer />
+                        <button type='button' onClick={this.handleClick}>
+                            Change Theme
+                        </button>
+                    </div>
+                </LoadingOverlay>
             </div>
-            <button type='button' onClick={handleClick}>
-                Change Theme
-            </button>
-        </div>
-    );
+        );
+    }
 }
 
 App.propTypes = {
-    currentTheme: PropTypes.string.isRequired,
+    userTheme: PropTypes.string.isRequired,
     changeTheme: PropTypes.func.isRequired,
+    fetchSettings: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired,
 };
 
-function mapStateToProps({ theme }) {
+function mapStateToProps(state) {
     return {
-        currentTheme: theme.theme,
+        userTheme: state.settings.theme,
+        isFetching: state.settings.isFetching,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        changeTheme: transaction => dispatch(toggleTheme(transaction)),
+        changeTheme: theme => dispatch(saveTheme(theme)),
+        fetchSettings: () => dispatch(fetchSettingsData()),
     };
 }
 

@@ -26,13 +26,16 @@ class TransactionsList extends PureComponent {
 }
 
 TransactionsList.propTypes = {
-    allTransactions: PropTypes.arrayOf(
-        PropTypes.shape({
-            description: PropTypes.string,
-            value: PropTypes.number,
-            id: PropTypes.string,
-        })
-    ).isRequired,
+    allTransactions: PropTypes.oneOfType([
+        PropTypes.array,
+        PropTypes.arrayOf(
+            PropTypes.shape({
+                description: PropTypes.string,
+                value: PropTypes.number,
+                id: PropTypes.string,
+            })
+        ),
+    ]).isRequired,
     // deleteTransaction: PropTypes.func.isRequired,
 };
 

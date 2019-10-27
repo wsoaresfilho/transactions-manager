@@ -44,11 +44,12 @@ class RegisterTransaction extends PureComponent {
         const value = isCredit ? transaction.value : transaction.value * -1;
         const id = uniqid();
 
-        addTransaction({
+        const teste = {
             ...transaction,
             value,
             id,
-        });
+        };
+        addTransaction(teste);
         this.setState(defaultState);
         this.focusDescriptionInput();
     }

@@ -1,7 +1,10 @@
 :root {
-  --main-bg-color: #d2ded0;
+  --light-bg-color: #d2ded0;
   --container-max-width: 1100px;
-  --main-text-color: #676767;
+  --light-text-color: #676767;
+  --dark-text-color: #b3b3b3;
+  --dark-bg-color: #232529;
+  --dark-bg-color-secondary: #3b3e45;
 }
 
 html {
@@ -16,14 +19,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--main-bg-color);
-  color: var(--main-text-color);
+  background-color: var(--light-bg-color);
+  color: var(--light-text-color);
   font-size: 16px;
+}
+
+body .dark {
+  color: var(--dark-text-color);
 }
 
 button {
   font-size: 1.2em;
-  color: var(--main-bg-color);
+  color: var(--light-bg-color);
   border: none;
   padding: 5px 15px;
   font-weight: bold;

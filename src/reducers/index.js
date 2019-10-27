@@ -1,30 +1,28 @@
 import { combineReducers } from 'redux';
 import {
-    ADD_TRANSACTION,
     DELETE_TRANSACTION,
-    TOGGLE_THEME,
+    SAVE_THEME,
+    GET_TRANSACTIONS,
+    GET_SETTINGS,
+    FETCH_PENDING,
+    FETCH_DONE,
 } from '../actions/index';
 
-const defaultTransaction = {
-    description: 'House Rent',
-    value: 1000.0,
-    id: 'default-123',
-};
 const defaultTransactions = {
-    transactions: [defaultTransaction],
+    allTransactions: [],
 };
 
 function transactions(state = defaultTransactions, action) {
     switch (action.type) {
-        case ADD_TRANSACTION:
+        case GET_TRANSACTIONS:
             return {
                 ...state,
-                transactions: state.transactions.concat(action.transaction),
+                allTransactions: action.transactions,
             };
         case DELETE_TRANSACTION:
             return {
                 ...state,
-                transactions: state.transactions.filter(t => {
+                allTransactions: state.allTransactions.filter(t => {
                     return t.id !== action.id;
                 }),
             };
@@ -33,16 +31,32 @@ function transactions(state = defaultTransactions, action) {
     }
 }
 
-const themes = {
-    LIGHT: 'light',
-    DARK: 'dark',
+const defaultSettings = {
+    theme: '',
+    isFetching: false,
 };
 
-function theme(state = { theme: themes.LIGHT }, action) {
+function settings(state = defaultSettings, action) {
     switch (action.type) {
-        case TOGGLE_THEME:
+        case SAVE_THEME:
             return {
+                ...state,
                 theme: action.theme,
+            };
+        case GET_SETTINGS:
+            return {
+                ...state,
+                theme: action.settings.theme,
+            };
+        case FETCH_PENDING:
+            return {
+                ...state,
+                isFetching: true,
+            };
+        case FETCH_DONE:
+            return {
+                ...state,
+                isFetching: false,
             };
         default:
             return state;
@@ -51,5 +65,5 @@ function theme(state = { theme: themes.LIGHT }, action) {
 
 export default combineReducers({
     transactions,
-    theme,
+    settings,
 });
