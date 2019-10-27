@@ -1,6 +1,4 @@
 :root {
-  --credit-color: #04da97;
-  --debit-color: red;
   --border-width: 6px;
   --border-radius: 20px;
   --item-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
@@ -8,20 +6,8 @@
   --radio-font-size: 1.2em;
 }
 
-:focus {
-  outline: var(--credit-color) auto 2px;
-}
-
 .register-transaction__container {
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-  background-color: #fffff0;
-  padding: 15px;
-}
-
-.dark .register-transaction__container {
-  background-color: var(--dark-bg-color-secondary);
+  margin-bottom: 50px;
 }
 
 .register-transaction__title {
@@ -34,16 +20,24 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 
-.register-transaction__form > * {
-  margin-bottom: 15px;
-  margin-right: 20px;
+.register-transaction__form-area {
+  justify-content: stretch;
+  flex-grow: 1;
+  display: flex;
+  min-width: 480px;
+}
+
+.register-transaction__form-area > * {
+  margin: 10px;
+  flex-grow: 1;
+  width: 50%;
 }
 
 .register-transaction__form .register-transaction__input {
   border: none;
-  flex-basis: 250px;
   box-shadow: var(--item-box-shadow);
   padding: 5px 10px;
   min-height: 35px;
@@ -52,10 +46,6 @@
 
 .register-transaction__form .register-transaction__input:focus {
   box-shadow: var(--item-box-shadow-hover);
-}
-
-.register-transaction__form input:first-child {
-  flex-grow: 3;
 }
 
 .register-transaction__radio input:checked + label {
@@ -68,8 +58,8 @@
   transition: transform cubic-bezier(0, 0, 0.3, 2) 0.4s;
   transform-style: preserve-3d;
   perspective: 800px;
-  min-width: 225px;
   box-shadow: var(--item-box-shadow);
+  box-sizing: border-box;
 }
 
 .register-transaction__radio:focus-within {
@@ -108,10 +98,11 @@
 
 .register-transaction__radio > label {
   display: inline-block;
-  padding: 5px 28px;
+  padding: 5px 0px;
   text-align: center;
   cursor: pointer;
   font-size: var(--radio-font-size);
+  width: 50%;
 }
 
 .register-transaction__radio > label,
@@ -163,4 +154,15 @@
 .hover-shadow:hover,
 .hover-shadow:focus {
   box-shadow: var(--item-box-shadow-hover);
+}
+
+@media only screen and (max-width: 600px) {
+  .register-transaction__form-area {
+    width: 100%;
+    flex-wrap: wrap;
+    min-width: 220px;
+  }
+  .register-transaction__form-area > * {
+    width: 100%;
+  }
 }

@@ -1,10 +1,14 @@
 :root {
+  --credit-color: #2b7d6a;
+  --debit-color: #bb0303;
   --light-bg-color: #d2ded0;
   --container-max-width: 1100px;
   --light-text-color: #676767;
   --dark-text-color: #b3b3b3;
   --dark-bg-color: #232529;
+  --light-bg-color-secondary: #fffff0;
   --dark-bg-color-secondary: #3b3e45;
+  --header-bg-color: #2b7d6a;
 }
 
 html {
@@ -34,4 +38,14 @@ button {
   border: none;
   padding: 5px 15px;
   font-weight: bold;
+}
+
+:focus {
+  outline: var(--credit-color) auto 2px;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
 }

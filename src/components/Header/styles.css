@@ -1,11 +1,15 @@
 .header {
-  background-color: #2b7d6a;
+  background-color: var(--header-bg-color);
   height: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
 }
 
 .header__container {

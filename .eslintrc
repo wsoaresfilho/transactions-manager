@@ -12,7 +12,8 @@
         "import/no-named-as-default": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "jsx-a11y/label-has-associated-control": "off",
-        "no-console": "off"
+        "no-console": "off",
+        "react/jsx-curly-newline": "off"
     },
     "env": {
         "browser": true,

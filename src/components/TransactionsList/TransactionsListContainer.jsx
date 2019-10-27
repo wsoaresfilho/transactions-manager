@@ -16,15 +16,20 @@ export class TransactionsListContainer extends PureComponent {
     }
 
     render() {
-        const { allTransactions, deleteTransaction } = this.props;
+        const { allTransactions, deleteTransaction, className } = this.props;
         return (
             <TransactionsList
                 allTransactions={allTransactions}
                 deleteTransaction={deleteTransaction}
+                className={className}
             />
         );
     }
 }
+
+TransactionsListContainer.defaultProps = {
+    className: null,
+};
 
 TransactionsListContainer.propTypes = {
     allTransactions: PropTypes.oneOfType([
@@ -39,21 +44,22 @@ TransactionsListContainer.propTypes = {
     ]).isRequired,
     getAllTransactions: PropTypes.func.isRequired,
     deleteTransaction: PropTypes.func.isRequired,
+    className: PropTypes.string,
 };
 
-function mapStateToProps({ transactions }) {
+const mapStateToProps = ({ transactions }) => {
     return {
         allTransactions: transactions.allTransactions,
     };
-}
+};
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
     return {
         getAllTransactions: () => dispatch(fetchTransactionsData()),
         deleteTransaction: transactionId =>
             dispatch(deleteTransactionAction(transactionId)),
     };
-}
+};
 
 export default connect(
     mapStateToProps,

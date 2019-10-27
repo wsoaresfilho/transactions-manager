@@ -5,20 +5,30 @@ import RegisterTransaction from './RegisterTransaction';
 import { addTransaction as addTransactionAction } from '../../actions';
 
 export const RegisterTransactionContainer = props => {
-    const { addTransaction } = props;
-    return <RegisterTransaction addTransaction={addTransaction} />;
+    const { addTransaction, className } = props;
+    return (
+        <RegisterTransaction
+            className={className}
+            addTransaction={addTransaction}
+        />
+    );
+};
+
+RegisterTransactionContainer.defaultProps = {
+    className: null,
 };
 
 RegisterTransactionContainer.propTypes = {
     addTransaction: PropTypes.func.isRequired,
+    className: PropTypes.string,
 };
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
     return {
         addTransaction: transaction =>
             dispatch(addTransactionAction(transaction)),
     };
-}
+};
 
 export default connect(
     null,

@@ -98,6 +98,14 @@ export const saveTransaction = (user, transaction) => {
     return fetchFake(user, 'transactions', methods.POST, allTransactions);
 };
 
+export const deleteTransaction = (user, transactionId) => {
+    const allTransactions = getLocalStorage(user, 'transactions');
+    const updatedTransactions = allTransactions.filter(transaction => {
+        return transaction.id !== transactionId;
+    });
+    return fetchFake(user, 'transactions', methods.POST, updatedTransactions);
+};
+
 export const getSettings = user => {
     return fetchFake(user, 'settings');
 };

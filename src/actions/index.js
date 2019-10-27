@@ -50,9 +50,12 @@ export const addTransaction = transaction => {
 };
 
 export const deleteTransaction = transactionId => {
-    return {
-        type: DELETE_TRANSACTION,
-        transactionId,
+    return dispatch => {
+        dispatch(setFetchPending());
+        return API.deleteTransaction(USER, transactionId).then(response => {
+            dispatch(getTransactions(response));
+            dispatch(setFetchDone());
+        });
     };
 };
 

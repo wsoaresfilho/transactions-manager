@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import uniqid from 'uniqid';
 import './styles.css';
 
@@ -97,14 +97,16 @@ class RegisterTransaction extends PureComponent {
 
     render() {
         const { isCredit, description, value } = this.state;
+        const { className } = this.props;
         const typeText = this.getTypeText();
-        const typeClassname = classNames({
+        const containerClassnames = `register-transaction__container ${className}`;
+        const typeClassnames = classnames({
             credit: isCredit,
             debit: !isCredit,
             'register-transaction__radio': true,
         });
         return (
-            <div className='register-transaction__container'>
+            <div className={containerClassnames}>
                 <h1 className='register-transaction__title'>
                     Register Transaction Form
                 </h1>
@@ -114,79 +116,92 @@ class RegisterTransaction extends PureComponent {
                     ref={this.formRef}
                     autoComplete='off'
                 >
-                    <input
-                        required
-                        id='description-input'
-                        className='register-transaction__input'
-                        type='text'
-                        value={description}
-                        placeholder='Transaction description'
-                        onChange={this.handleDescriptionChange}
-                        ref={this.descriptionRef}
-                    />
-                    <input
-                        required
-                        id='money-input'
-                        className='register-transaction__input'
-                        type='number'
-                        min='0.01'
-                        step='0.01'
-                        value={value}
-                        placeholder='Transaction value'
-                        onChange={this.handleMoneyChange}
-                    />
-
-                    <div
-                        role='group'
-                        className={typeClassname}
-                        ref={this.toggleRef}
-                    >
+                    <div className='register-transaction__form-area'>
                         <input
-                            onChange={this.handleTransactionTypeChange}
-                            type='radio'
-                            id='type-credit'
-                            name='type'
-                            value={transactionType.CREDIT}
-                            checked={isCredit}
+                            required
+                            id='description-input'
+                            className='register-transaction__input'
+                            type='text'
+                            value={description}
+                            placeholder='Transaction description'
+                            onChange={this.handleDescriptionChange}
+                            ref={this.descriptionRef}
                         />
-                        <label id='type-credit__label' htmlFor='type-credit'>
-                            Credit
-                        </label>
-
                         <input
-                            onChange={this.handleTransactionTypeChange}
-                            type='radio'
-                            id='type-debit'
-                            name='type'
-                            value={transactionType.DEBIT}
-                            checked={!isCredit}
+                            required
+                            id='money-input'
+                            className='register-transaction__input'
+                            type='number'
+                            min='0.01'
+                            step='0.01'
+                            value={value}
+                            placeholder='Transaction value'
+                            onChange={this.handleMoneyChange}
                         />
-                        <label id='type-debit__label' htmlFor='type-debit'>
-                            Debit
-                        </label>
-
-                        <div
-                            id='flap'
-                            onTransitionEnd={this.handleTransitionEnd}
-                        >
-                            <span className='content'>{typeText}</span>
-                        </div>
                     </div>
 
-                    <button
-                        className='register-transaction__button hover-shadow'
-                        type='submit'
-                    >
-                        Add Transaction
-                    </button>
+                    <div className='register-transaction__form-area'>
+                        <div
+                            role='group'
+                            className={typeClassnames}
+                            ref={this.toggleRef}
+                            title='Transaction type'
+                        >
+                            <input
+                                onChange={this.handleTransactionTypeChange}
+                                type='radio'
+                                id='type-credit'
+                                name='type'
+                                value={transactionType.CREDIT}
+                                checked={isCredit}
+                            />
+                            <label
+                                id='type-credit__label'
+                                htmlFor='type-credit'
+                            >
+                                Credit
+                            </label>
+
+                            <input
+                                onChange={this.handleTransactionTypeChange}
+                                type='radio'
+                                id='type-debit'
+                                name='type'
+                                value={transactionType.DEBIT}
+                                checked={!isCredit}
+                            />
+                            <label id='type-debit__label' htmlFor='type-debit'>
+                                Debit
+                            </label>
+
+                            <div
+                                id='flap'
+                                onTransitionEnd={this.handleTransitionEnd}
+                            >
+                                <span className='content'>{typeText}</span>
+                            </div>
+                        </div>
+
+                        <button
+                            className='register-transaction__button hover-shadow'
+                            type='submit'
+                        >
+                            Add Transaction
+                        </button>
+                    </div>
                 </form>
             </div>
         );
     }
 }
 
+RegisterTransaction.defaultProps = {
+    className: null,
+};
+
 RegisterTransaction.propTypes = {
     addTransaction: PropTypes.func.isRequired,
+    className: PropTypes.string,
 };
 
 export default RegisterTransaction;

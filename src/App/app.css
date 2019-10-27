@@ -1,14 +1,36 @@
 .app-container {
   max-width: var(--container-max-width);
   margin: auto;
-  padding: 30px 15px;
-  height: 100vh;
+  padding: 120px 20px 60px;
+  height: calc(100vh - 180px);
 }
 
 .app {
   height: 100vh;
 }
 
+.area-container {
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  background-color: var(--light-bg-color-secondary);
+  padding: 20px;
+}
+
 .dark {
   background-color: var(--dark-bg-color);
+}
+
+.dark .area-container {
+  background-color: var(--dark-bg-color-secondary);
+}
+
+.theme-switch {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+._loading_overlay_wrapper--active {
+  height: 100vh;
 }

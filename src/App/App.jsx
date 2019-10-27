@@ -6,6 +6,7 @@ import LoadingOverlay from 'react-loading-overlay';
 import Header from '../components/Header/Header';
 import RegisterTransactionContainer from '../components/RegisterTransaction/RegisterTransactionContainer';
 import TransactionsListContainer from '../components/TransactionsList/TransactionsListContainer';
+import Switch from './Switch';
 import { saveTheme, fetchSettingsData } from '../actions';
 import './app.css';
 
@@ -13,7 +14,7 @@ class App extends PureComponent {
     constructor(props) {
         super(props);
 
-        this.handleClick = this.handleClick.bind(this);
+        this.handleThemeChange = this.handleThemeChange.bind(this);
     }
 
     componentDidMount() {
@@ -21,7 +22,7 @@ class App extends PureComponent {
         fetchSettings();
     }
 
-    handleClick() {
+    handleThemeChange() {
         const { changeTheme, userTheme } = this.props;
         const value = userTheme === 'light' ? 'dark' : 'light';
         changeTheme(value);
@@ -29,23 +30,36 @@ class App extends PureComponent {
 
     render() {
         const { userTheme, isFetching } = this.props;
-        const classname = classNames({
+        const appClassnames = classNames({
             app: true,
             light: userTheme === 'light',
             dark: userTheme === 'dark',
         });
+        const formsClassnames = classNames({
+            'area-container': true,
+        });
+        const isDarkTheme = userTheme === 'dark';
 
         return (
-            <div className={classname}>
+            <div className={appClassnames}>
                 <Header />
-                <LoadingOverlay active={isFetching} spinner>
-                    <div className='app-container'>
-                        <RegisterTransactionContainer />
-                        <TransactionsListContainer />
-                        <button type='button' onClick={this.handleClick}>
-                            Change Theme
-                        </button>
-                    </div>
+                <LoadingOverlay active={isFetching} spinner fadeSpeed={300}>
+                    {userTheme !== '' && (
+                        <div className='app-container'>
+                            <RegisterTransactionContainer
+                                className={formsClassnames}
+                            />
+                            <TransactionsListContainer
+                                className={formsClassnames}
+                            />
+                            <div className='theme-switch'>
+                                <Switch
+                                    onChange={this.handleThemeChange}
+                                    isChecked={isDarkTheme}
+                                />
+                            </div>
+                        </div>
+                    )}
                 </LoadingOverlay>
             </div>
         );
