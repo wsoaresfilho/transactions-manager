@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegisterTransaction component when there are no transactions snapshot correctly 1`] = `ShallowWrapper {}`;

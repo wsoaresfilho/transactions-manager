@@ -5,11 +5,6 @@ import { moneyFormat, moneyFormatIntl } from '../../utils/helpers';
 import './styles.css';
 
 class TransactionsList extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
     handleDeleteClick(id) {
         const { deleteTransaction } = this.props;
         deleteTransaction(id);
@@ -48,7 +43,7 @@ class TransactionsList extends PureComponent {
                         </li>
                         {allTransactions.length === 0 && (
                             <span className='transaction-list_empty transaction-list__list-item'>
-                                There are no item registered
+                                There are no items registered
                             </span>
                         )}
                         {allTransactions.reverse().map(item => {

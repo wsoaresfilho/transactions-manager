@@ -29,9 +29,9 @@ const promiseFactory = data => {
         }, FAKE_FETCH_TIME);
     });
 
-    promise.then(value => {
-        console.warn(value);
-    });
+    // promise.then(value => {
+    //     console.warn(value);
+    // });
 
     return promise;
 };

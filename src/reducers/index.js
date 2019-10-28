@@ -6,13 +6,13 @@ import {
     GET_SETTINGS,
     FETCH_PENDING,
     FETCH_DONE,
-} from '../actions/index';
+} from '../actions/types';
 
 const defaultTransactions = {
     allTransactions: [],
 };
 
-function transactions(state = defaultTransactions, action) {
+export const transactions = (state = defaultTransactions, action) => {
     switch (action.type) {
         case GET_TRANSACTIONS:
             return {
@@ -29,14 +29,14 @@ function transactions(state = defaultTransactions, action) {
         default:
             return state;
     }
-}
+};
 
 const defaultSettings = {
     theme: '',
     isFetching: false,
 };
 
-function settings(state = defaultSettings, action) {
+export const settings = (state = defaultSettings, action) => {
     switch (action.type) {
         case SAVE_THEME:
             return {
@@ -61,7 +61,7 @@ function settings(state = defaultSettings, action) {
         default:
             return state;
     }
-}
+};
 
 export default combineReducers({
     transactions,

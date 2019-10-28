@@ -23,7 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:watch": "react-scripts test --watchAll",
-    "test:coverage": "npm test -- --coverage",
+    "test:coverage": "npm test -- --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "pretty-quick": "pretty-quick"
   },

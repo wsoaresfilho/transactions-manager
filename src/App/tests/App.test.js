@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import App from '../App';
+import { setFetchDone, fetchSettingsData } from '../../actions/index';
 
 describe('App component', () => {
     let wrapper;
@@ -38,6 +39,17 @@ describe('App component', () => {
             expect(wrapper.find('Header').length).toBe(1);
         });
 
+        it('LoadingOverlay element', () => {
+            store.dispatch(fetchSettingsData()).then(() => {
+                expect(wrapper.find('LoadingOverlay').length).toBe(1);
+            });
+        });
+
+        it('LoadingOverlay element', () => {
+            store.dispatch(setFetchDone());
+            expect(wrapper.find('LoadingOverlay').length).toBe(0);
+        });
+
         it('app-container element', () => {
             expect(wrapper.find('.app-container').length).toBe(1);
         });
@@ -46,6 +58,14 @@ describe('App component', () => {
             expect(
                 wrapper.find('Connect(RegisterTransactionContainer)').exists()
             ).toBeTruthy();
+        });
+
+        it('theme-switch element', () => {
+            expect(wrapper.find('.theme-switch').length).toBe(1);
+        });
+
+        it('Switch element', () => {
+            expect(wrapper.find('CustomizedSwitches').length).toBe(1);
         });
 
         it('snapshot correctly', () => {

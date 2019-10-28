@@ -1,30 +1,24 @@
+import * as types from './types';
 import * as API from '../api/api';
 
 // This variable is simulating a logged user
 const USER = 'jose';
 
-export const GET_TRANSACTIONS = 'GET_TRANSACTIONS';
-export const DELETE_TRANSACTION = 'DELETE_TRANSACTION';
-export const SAVE_THEME = 'SAVE_THEME';
-export const GET_SETTINGS = 'GET_SETTINGS';
-export const FETCH_PENDING = 'FETCH_PENDING';
-export const FETCH_DONE = 'FETCH_DONE';
-
 export const setFetchPending = () => {
     return {
-        type: FETCH_PENDING,
+        type: types.FETCH_PENDING,
     };
 };
 
 export const setFetchDone = () => {
     return {
-        type: FETCH_DONE,
+        type: types.FETCH_DONE,
     };
 };
 
 export const getTransactions = transactions => {
     return {
-        type: GET_TRANSACTIONS,
+        type: types.GET_TRANSACTIONS,
         transactions,
     };
 };
@@ -61,7 +55,7 @@ export const deleteTransaction = transactionId => {
 
 export const saveThemeToStore = theme => {
     return {
-        type: SAVE_THEME,
+        type: types.SAVE_THEME,
         theme,
     };
 };
@@ -70,7 +64,6 @@ export const saveTheme = theme => {
     return dispatch => {
         dispatch(setFetchPending());
         return API.saveUserTheme(USER, theme).then(response => {
-            console.warn('saveTheme FETCH: ', response);
             dispatch(saveThemeToStore(response.theme));
             dispatch(setFetchDone());
         });
@@ -79,7 +72,7 @@ export const saveTheme = theme => {
 
 export const getSettings = settings => {
     return {
-        type: GET_SETTINGS,
+        type: types.GET_SETTINGS,
         settings,
     };
 };
@@ -88,17 +81,6 @@ export const fetchSettingsData = () => {
     return dispatch => {
         dispatch(setFetchPending());
         return API.getSettings(USER).then(response => {
-            dispatch(getSettings(response));
-            dispatch(setFetchDone());
-        });
-    };
-};
-
-export const saveSettings = settings => {
-    return dispatch => {
-        dispatch(setFetchPending());
-        return API.saveSettings(USER, settings).then(response => {
-            console.warn('saveSettings FETCH: ', response);
             dispatch(getSettings(response));
             dispatch(setFetchDone());
         });
