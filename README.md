@@ -1,68 +1,58 @@
+# Transactions Manager
+
+This project was created as a requirement for a job interview.
+
+It is a React Application that register and deletes money transactions (credits or debits), list them in recency order and shows the final balance.
+
+## Features:
+
+- Add your debits or debits
+- List the transactions ordered by most recent ones
+- Calculates the balance of your transactions and shows it on the screen
+- Delete transactions from the list
+- A Switch that togles betwenn 2 different style theme: Light and Dark
+- The theme chosen and all the transactions registered are saved in browser's localSorage
+
+## Future features:
+
+- Add filters (by type, by recency, ...)
+- Add new transaction fields (date, ...)
+- Add selection of different money currencies (Dollar, Euro, ...) fetched by API
+- Create log in page to add users
+
+## Running the app in development mode:
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Make sure that you have NodeJS installed: `node -v`
+
+Install all dependencies: `yarn install`
+
+Running a local server: `yarn start`
+
+## Development tools used:
+
+For Unit Tests, this project uses:
+- [Jest](https://jestjs.io/): JavaScript Testing Framework 
+- [Enzyme](https://airbnb.io/enzyme/): JavaScript Testing utility for React that makes it easier to test your React Components' output 
+
+For the development of this project, tools were installed to help in the optimization and quality assurance of the developed code:
+- [Prettier](https://prettier.io/): An code formatter that integrates with most editors, helps saving time and keep code style consistent
+- [ESLint](https://eslint.org/): ESLint is tool created to provide a pluggable linting utility for JavaScript
+- [Husky](https://www.npmjs.com/package/husky): Creates Git hooks in an easy way preventing bad commits and bad pushes.
+
+Husky was configured to run Pretty and ESLint in pre commit git hook and to run Unit Tests in pre push git hook
 
 In the project directory, you can run:
 
-### `npm start`
+#### `npm test`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the Unit Tests
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### `npm run test:coverage`
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Runs the Unit Tests and generates code coverage
 
 ### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Find nore about this subject in here: https://facebook.github.io/create-react-app/docs/deployment
