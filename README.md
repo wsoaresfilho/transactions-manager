@@ -26,7 +26,7 @@ For Unit Tests, this project uses:
 - [Jest](https://jestjs.io/): JavaScript Testing Framework 
 - [Enzyme](https://airbnb.io/enzyme/): JavaScript Testing utility for React that makes it easier to test your React Components' output 
 
-For the development of this project, tools were installed to help in the optimization and quality assurance of the developed code:
+For development optimization and code quality assurance, this tools are also used:
 - [Prettier](https://prettier.io/): An code formatter that integrates with most editors, helps saving time and keep code style consistent
 - [ESLint](https://eslint.org/): ESLint is tool created to provide a pluggable linting utility for JavaScript
 - [Husky](https://www.npmjs.com/package/husky): Creates Git hooks in an easy way preventing bad commits and bad pushes.
