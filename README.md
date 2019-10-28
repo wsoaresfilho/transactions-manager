@@ -10,7 +10,7 @@ It is a React Application that registers and deletes money transactions (credits
 -   List the transactions ordered by most recent ones
 -   Calculate the balance of your transactions and shows it on the screen
 -   Delete transactions from the list
--   Theme switch that togles betwenn 2 different styling themes: Light and Dark
+-   Theme switch that togles between 2 different styling themes: Light and Dark
 -   The theme chosen and all the transactions registered are saved in browser's localSorage
 
 ## Future features:
@@ -47,9 +47,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Make sure that you have NodeJS installed: `node -v`
 
-Install all dependencies: `yarn install`
+Install all dependencies: `npm install`
 
-Running a local server: `yarn start`
+Running a local server: `npm start`
 
 ### Deployment
 
