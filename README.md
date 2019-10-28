@@ -2,15 +2,15 @@
 
 This project was created as a requirement for a job interview.
 
-It is a React Application that register and deletes money transactions (credits or debits), list them in recency order and shows the final balance.
+It is a React Application that registers and deletes money transactions (credits or debits), list them in recency order and shows the final balance.
 
 ## Features:
 
-- Add your debits or debits
+- Add your debits and/or credits
 - List the transactions ordered by most recent ones
-- Calculates the balance of your transactions and shows it on the screen
+- Calculate the balance of your transactions and shows it on the screen
 - Delete transactions from the list
-- A Switch that togles betwenn 2 different style theme: Light and Dark
+- Theme switch that togles betwenn 2 different styling themes: Light and Dark
 - The theme chosen and all the transactions registered are saved in browser's localSorage
 
 ## Future features:
@@ -18,17 +18,7 @@ It is a React Application that register and deletes money transactions (credits 
 - Add filters (by type, by recency, ...)
 - Add new transaction fields (date, ...)
 - Add selection of different money currencies (Dollar, Euro, ...) fetched by API
-- Create log in page to add users
-
-## Running the app in development mode:
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-Make sure that you have NodeJS installed: `node -v`
-
-Install all dependencies: `yarn install`
-
-Running a local server: `yarn start`
+- Create login page to add users
 
 ## Development tools used:
 
@@ -43,15 +33,21 @@ For the development of this project, tools were installed to help in the optimiz
 
 Husky was configured to run Pretty and ESLint in pre commit git hook and to run Unit Tests in pre push git hook
 
-In the project directory, you can run:
+In the project directory, you can:
 
-#### `npm test`
+Run Unit tests: `npm test`
 
-Runs the Unit Tests
+Run Unit sests and generate code coverage: `npm run test:coverage`
 
-#### `npm run test:coverage`
+## Running the app in development mode:
 
-Runs the Unit Tests and generates code coverage
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Make sure that you have NodeJS installed: `node -v`
+
+Install all dependencies: `yarn install`
+
+Running a local server: `yarn start`
 
 ### Deployment
 
