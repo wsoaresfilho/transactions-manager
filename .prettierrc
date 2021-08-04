@@ -4,6 +4,7 @@
     "semi": true,
     "singleQuote": true,
     "jsxSingleQuote": true,
+    "endOfLine":"auto",
     "overrides": [
         {
             "files": ["*.css", "*.json"],

@@ -5,7 +5,9 @@
     "extends": ["airbnb", "prettier"],
     "plugins": ["prettier"],
     "rules": {
-        "prettier/prettier": ["error"],
+        "prettier/prettier": ["error", {
+            "endOfLine": "auto"
+        }],
         "react/destructuring-assignment": ["warn"],
         "react/jsx-indent": ["error", 4],
         "react/jsx-indent-props": ["error", 4],

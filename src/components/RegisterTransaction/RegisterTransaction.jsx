@@ -37,32 +37,6 @@ class RegisterTransaction extends PureComponent {
         this.focusDescriptionInput();
     }
 
-    onSubmit(event) {
-        event.preventDefault();
-        const { isCredit, ...transaction } = this.state;
-        const { addTransaction } = this.props;
-        const value = isCredit ? transaction.value : transaction.value * -1;
-        const id = uniqid();
-
-        const teste = {
-            ...transaction,
-            value,
-            id,
-        };
-        addTransaction(teste);
-        this.setState(defaultState);
-        this.focusDescriptionInput();
-    }
-
-    getTypeText() {
-        const { isCredit } = this.state;
-        return isCredit ? transactionType.CREDIT : transactionType.DEBIT;
-    }
-
-    focusDescriptionInput() {
-        if (this.descriptionRef.current) this.descriptionRef.current.focus();
-    }
-
     handleTransitionEnd() {
         const { isCredit } = this.state;
         const signalRotation = isCredit ? '' : '-';
@@ -93,6 +67,32 @@ class RegisterTransaction extends PureComponent {
         this.setState({
             isCredit,
         });
+    }
+
+    onSubmit(event) {
+        event.preventDefault();
+        const { isCredit, ...transaction } = this.state;
+        const { addTransaction } = this.props;
+        const value = isCredit ? transaction.value : transaction.value * -1;
+        const id = uniqid();
+
+        const teste = {
+            ...transaction,
+            value,
+            id,
+        };
+        addTransaction(teste);
+        this.setState(defaultState);
+        this.focusDescriptionInput();
+    }
+
+    getTypeText() {
+        const { isCredit } = this.state;
+        return isCredit ? transactionType.CREDIT : transactionType.DEBIT;
+    }
+
+    focusDescriptionInput() {
+        if (this.descriptionRef.current) this.descriptionRef.current.focus();
     }
 
     render() {

@@ -71,7 +71,10 @@ describe('transactions reducer', () => {
 
     it('should handle DELETE_TRANSACTION', () => {
         const transactionsObj = {
-            allTransactions: [{ value: 123, id: 111 }, { value: 456, id: 222 }],
+            allTransactions: [
+                { value: 123, id: 111 },
+                { value: 456, id: 222 },
+            ],
         };
         expect(
             transactions(transactionsObj, {
