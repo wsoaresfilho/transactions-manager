@@ -13,9 +13,10 @@ class TransactionsList extends PureComponent {
     render() {
         const { allTransactions, className } = this.props;
         const containerClassnames = `transaction-list__container ${className}`;
-        const totalBalance = allTransactions.reduce((acc, curr) => {
-            return acc + curr.value;
-        }, 0);
+        const totalBalance = allTransactions.reduce(
+            (acc, curr) => acc + curr.value,
+            0
+        );
 
         return (
             <div>

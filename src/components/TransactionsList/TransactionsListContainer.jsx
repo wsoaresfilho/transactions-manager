@@ -47,19 +47,15 @@ TransactionsListContainer.propTypes = {
     className: PropTypes.string,
 };
 
-const mapStateToProps = ({ transactions }) => {
-    return {
-        allTransactions: transactions.allTransactions,
-    };
-};
+const mapStateToProps = ({ transactions }) => ({
+    allTransactions: transactions.allTransactions,
+});
 
-const mapDispatchToProps = dispatch => {
-    return {
-        getAllTransactions: () => dispatch(fetchTransactionsData()),
-        deleteTransaction: transactionId =>
-            dispatch(deleteTransactionAction(transactionId)),
-    };
-};
+const mapDispatchToProps = dispatch => ({
+    getAllTransactions: () => dispatch(fetchTransactionsData()),
+    deleteTransaction: transactionId =>
+        dispatch(deleteTransactionAction(transactionId)),
+});
 
 export default connect(
     mapStateToProps,

@@ -22,9 +22,9 @@ export const transactions = (state = defaultTransactions, action) => {
         case DELETE_TRANSACTION:
             return {
                 ...state,
-                allTransactions: state.allTransactions.filter(t => {
-                    return t.id !== action.id;
-                }),
+                allTransactions: state.allTransactions.filter(
+                    t => t.id !== action.id
+                ),
             };
         default:
             return state;

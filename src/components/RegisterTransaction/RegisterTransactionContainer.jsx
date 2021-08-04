@@ -23,11 +23,8 @@ RegisterTransactionContainer.propTypes = {
     className: PropTypes.string,
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        addTransaction: transaction =>
-            dispatch(addTransactionAction(transaction)),
-    };
-};
+const mapDispatchToProps = dispatch => ({
+    addTransaction: transaction => dispatch(addTransactionAction(transaction)),
+});
 
 export default connect(null, mapDispatchToProps)(RegisterTransactionContainer);

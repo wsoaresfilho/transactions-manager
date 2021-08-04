@@ -100,15 +100,13 @@ export const saveTransaction = (user, transaction) => {
 
 export const deleteTransaction = (user, transactionId) => {
     const allTransactions = getLocalStorage(user, 'transactions');
-    const updatedTransactions = allTransactions.filter(transaction => {
-        return transaction.id !== transactionId;
-    });
+    const updatedTransactions = allTransactions.filter(
+        transaction => transaction.id !== transactionId
+    );
     return fetchFake(user, 'transactions', methods.POST, updatedTransactions);
 };
 
-export const getSettings = user => {
-    return fetchFake(user, 'settings');
-};
+export const getSettings = user => fetchFake(user, 'settings');
 
 export const saveUserTheme = (user, theme) => {
     const userSettings = getLocalStorage(user, 'settings');
