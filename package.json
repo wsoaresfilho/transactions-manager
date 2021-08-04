@@ -32,8 +32,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && eslint --fix --ext .jsx,.js src/",
-      "pre-push": "react-scripts test"
+      "pre-commit": "pretty-quick --staged && eslint --fix --ext .jsx,.js src/"
     }
   },
   "browserslist": {
